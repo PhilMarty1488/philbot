@@ -18,9 +18,11 @@ async def send_welcome(message: types.Message):
     member = await bot.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
     if member.status in ["member", "administrator", "creator"]:
         await message.answer(
-            f"Спасибо за подписку! Вот твой видеоурок и финансовая система:
-{VIDEO_POST_LINK}"
-        )
+    "Спасибо за подписку! Вот твой видеоурок и финансовая система:",
+    reply_markup=InlineKeyboardMarkup().add(
+        InlineKeyboardButton("Мини-курс", url="https://t.me/philphilosophy/13")
+    )
+)
     else:
         await message.answer(
             f"Чтобы получить доступ к материалам, подпишись на канал {CHANNEL_USERNAME} и нажми /start ещё раз."
